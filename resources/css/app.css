@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos de la tabla */
+.table-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow-x: auto; /* Para móviles */
+    font-family: 'Arial', sans-serif;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Encabezados */
+.table thead th {
+    background: #4a90e2;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Filas */
+.table tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e3e3e3;
+    font-size: 14px;
+}
+
+/* Fila alternada */
+.table tbody tr:nth-child(even) {
+    background: #f7f9fc;
+}
+
+/* Hover fila */
+.table tbody tr:hover {
+    background: #eaf2ff;
+}
+
+/* Botones de acción */
+.table td a {
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-right: 5px;
+    color: white;
+}
+
+.table td a:nth-child(1) { background: #4caf50; }   /* Editar */
+.table td a:nth-child(2) { background: #2196f3; }   /* Mostrar */
+
+/* Botón eliminar */
+.table td form button {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.table td form button:hover {
+    background: #c62828;
+}
+
+/* Paginación (Laravel links) */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination > * {
+    margin: 0 5px;
+}
+
+
+/* Estilos de los detalles*/
+.card {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #4a90e2;
+}
+
+.card p strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.back-link {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.back-link a {
+    text-decoration: none;
+    color: #4a90e2;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.back-link a:hover {
+    color: #1f6fba;
+}
+
+/* Estilos del formulario */
+.form-container {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilos de las etiquetas */
+.form-container label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+/* Inputs y textarea */
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #f8f9fa;
+    transition: border-color 0.3s;
+}
+
+/* Cuando el input recibe click */
+.form-container input:focus,
+.form-container textarea:focus {
+    border-color: #4a90e2;
+    outline: none;
+    background: #ffffff;
+}
+
+/* Botón */
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #4a90e2;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.form-container button:hover {
+    background: #1f6fba;
+}
+
+/* Enlace de volver */
+.back-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-link a {
+    text-decoration: none;
+    color: #4a90e2;
+    font-weight: bold;
+}
+
+.back-link a:hover {
+    color: #1f6fba;
+}
+
+
