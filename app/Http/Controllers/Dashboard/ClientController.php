@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Client\StoreRequest; 
 use App\Models\Client;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -14,6 +16,8 @@ class ClientController extends Controller
      */
     public function index()
     {
+        //$client = Client::find(3);
+        //dd($client->name); 
         $clients = Client::paginate(5);
         return view('dashboard.client.index', compact('clients'));
     }
@@ -31,10 +35,10 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        Client::create($request->all());
-        return redirect()->route('client.index');
+        Client::create($request->validated());
+        return redirect()->route('client.create')->with('success', 'El usuario se registró con exito');
     }
 
     /**
@@ -56,10 +60,10 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Client $client)
+    public function update(StoreRequest $request, Client $client)
     {
-        $client->update($request->all());
-        return redirect()->route('client.index');
+        $client->update($request->validated());
+        return redirect()->route('client.index')->with('success', 'Los datos se actualizaron con exito');
     }
 
     /**

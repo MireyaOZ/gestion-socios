@@ -1,19 +1,16 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 
-@section('content')   
+@section('content')
+    @include('dashboard.client.fragment._errors-form')
+    <div class="form-container">
+        <h1 class="card-title">Actualizar cliente</h1>
 
-    {{--@include('dashboard.fragment._errors-form')--}} 
+        <form action="{{ route('client.update', $client->id) }}" method="post">
 
-    <h1 class="card-title">Actualizar cliente</h1>
-    
-    <form action="{{ route('client.update', $client->id) }}" method="post">   
-         
-        @method('PATCH')
+            @method('PATCH')
 
-        @include('dashboard.client._form') 
-                                                            
+            @include('dashboard.client._form')
 
-
-    </form>
-
+        </form>
+    </div>
 @endsection

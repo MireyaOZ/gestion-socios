@@ -16,8 +16,13 @@ return new class extends Migration
             $table->string('contract_number', 50);
             $table->string('curp', 18);
             $table->string('name', 80);
-            $table->text('direction', 500);
+            $table->string('street', 80);
+            $table->string('colony', 80);
+            $table->string('interior_number', 80);
+            $table->string('exterior_number', 80);
+            $table->softDeletes();
             $table->timestamps();
+
         });
     }
 

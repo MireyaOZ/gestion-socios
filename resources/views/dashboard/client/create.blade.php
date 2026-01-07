@@ -1,15 +1,15 @@
-@extends('layouts.app')  
+@extends('layouts.app')
 
-@section('content')  
+@section('content')
+    @include('dashboard.client.fragment._errors-form')
+    @include('dashboard.client.fragment._user-success')
+    <div class="form-container">
+        <h1 class="card-title">Registrar un cliente</h1>
 
-    {{--@include('dashboard.fragment._errors-form') --}}
+        <form action="{{ route('client.store') }}" method="post">
 
-    <h1 class="card-title">Registrar un cliente</h1>
-    
-    <form action="{{ route('client.store')}}" method="post">      
+            @include('dashboard.client._form')
 
-        @include('dashboard.client._form')
-        
-    </form>
-
+        </form>
+    </div>
 @endsection

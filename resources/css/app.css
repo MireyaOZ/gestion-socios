@@ -4,208 +4,264 @@
 
 /* Estilos de la tabla */
 .table-container {
-    max-width: 1000px;
-    margin: 40px auto;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    overflow-x: auto; /* Para móviles */
-    font-family: 'Arial', sans-serif;
+    @apply 
+        max-w-[1000px]    /*max-witdth*/
+        mx-auto           /*margin horizontal*/
+        my-10             /*margin vertical*/
+      bg-white          /*background*/ 
+        p-5               /*padding*/ 
+        rounded-xl        /*border-radius*/ 
+        shadow-lg         /*box-shadow*/ 
+        font-sans;        /*font-family*/ 
 }
 
-.table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-/* Encabezados */
+/* Encabezados de la tabla */
 .table thead th {
-    background: #4a90e2;
-    color: white;
-    padding: 12px;
-    text-align: left;
-    font-size: 15px;
+    @apply 
+      bg-blue-500 
+      text-white         /*color-texto*/ 
+        p-3 
+        text-center        /*text-align*/ 
+        text-[15px];       /*font-size*/ 
 }
 
-/* Filas */
+/* Filas de la tabla */
 .table tbody td {
-    padding: 10px 12px;
-    border-bottom: 1px solid #e3e3e3;
-    font-size: 14px;
+    @apply 
+        px-3              /*padding horizontal*/ 
+        py-2              /*padding vertical*/ 
+        border-b          /*border-bottom*/ 
+        border-gray-300 /*border-color*/ 
+        text-sm;
 }
 
 /* Fila alternada */
 .table tbody tr:nth-child(even) {
-    background: #f7f9fc;
+    @apply bg-[#f7f9fc];
 }
 
 /* Hover fila */
 .table tbody tr:hover {
-    background: #eaf2ff;
+    @apply bg-[#eaf2ff];
 }
 
 /* Botones de acción */
-.table td a {
-    text-decoration: none;
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 13px;
-    margin-right: 5px;
-    color: white;
+.btn {
+    @apply 
+        border         /*borde solido y color por defecto*/ 
+        rounded-lg        /*borde redondeado*/ 
+        px-3 
+        py-2
+        text-white 
+        font-bold       /*letra en negritas*/ 
+        inline-block     /*display*/ 
+        transition-all     /*transición suave*/ 
+        w-28
+        text-center; 
 }
 
-.table td a:nth-child(1) { background: #4caf50; }   /* Editar */
-.table td a:nth-child(2) { background: #2196f3; }   /* Mostrar */
-
-/* Botón eliminar */
-.table td form button {
-    background: #f44336;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 13px;
+.btn-success {
+    @apply bg-green-600 hover:bg-green-800 mb-4  w-32
 }
 
-.table td form button:hover {
-    background: #c62828;
+.btn-warning {
+    @apply bg-green-600 hover:bg-green-800
 }
+
+.btn-primary {
+    @apply bg-blue-600 hover:bg-blue-800
+}
+
+.btn-danger {
+    @apply bg-red-600 hover:bg-red-800 
+}
+
 
 /* Paginación (Laravel links) */
 .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    @apply mt-[20px];    /*margin-top*/
 }
 
-.pagination > * {
-    margin: 0 5px;
-}
-
-
-/* Estilos de los detalles*/
+/* Estilos de los detalles(show)*/
 .card {
-    max-width: 500px;
-    margin: 40px auto;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    font-family: 'Arial', sans-serif;
+    @apply 
+        max-w-[500px] 
+        mx-auto 
+        mt-10 
+        bg-white 
+        p-[25px] 
+        rounded-xl 
+        shadow-lg 
+        font-sans;
 }
 
 .card-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #333;
+    @apply 
+        text-2xl 
+        font-bold 
+        mb-5 
+        text-center 
+        text-[#333];
 }
 
 .card p {
-    font-size: 16px;
-    margin-bottom: 12px;
-    padding: 12px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border-left: 4px solid #4a90e2;
+    @apply 
+        text-base 
+        mb-3 
+        p-3 
+        bg-[#f8f9fa] 
+        rounded-lg 
+        border-l-4   /*border left*/
+        border-[#4a90e2];  /*border color*/
 }
 
 .card p strong {
-    color: #333;
-    font-weight: 600;
+    @apply text-[#333] font-semibold;
 }
 
 .back-link {
-    margin-top: 25px;
-    text-align: center;
+   @apply mt-[25px] text-center;
 }
 
 .back-link a {
-    text-decoration: none;
-    color: #4a90e2;
-    font-weight: bold;
-    transition: 0.3s;
+    @apply no-underline text-[#4a90e2] font-bold transition duration-300;
 }
 
 .back-link a:hover {
-    color: #1f6fba;
+    @apply text-[#1f6fba];
 }
 
 /* Estilos del formulario */
 .form-container {
-    max-width: 500px;
-    margin: 40px auto;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    font-family: 'Arial', sans-serif;
+    @apply
+        max-w-[500px] 
+        mx-auto 
+        mt-10 
+        bg-white 
+        p-[30px] 
+        rounded-xl 
+        shadow-lg 
+        font-sans;
 }
 
 /* Estilos de las etiquetas */
 .form-container label {
-    display: block;
-    font-weight: bold;
-    color: #333;
-    margin-top: 15px;
-    margin-bottom: 5px;
+    @apply 
+        block  /*Ocupa el ancho disponible en el contenedor*/
+        font-bold   /*letra en negrita*/
+      text-gray-800    /*color letra*/
+        mt-4 
+        mb-1;
 }
 
 /* Inputs y textarea */
 .form-container input,
 .form-container textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #d1d1d1;
-    border-radius: 8px;
-    font-size: 15px;
-    background: #f8f9fa;
-    transition: border-color 0.3s;
+    @apply 
+        w-full    /*With*/
+        p-3 
+        border    /*borde*/
+        border-gray-300 /*color del borde*/
+        rounded-lg 
+        text-[15px] 
+        bg-gray-100  /*fonfo, background*/
+        transition-colors;   /*transición suave para cambios de color*/
 }
 
 /* Cuando el input recibe click */
 .form-container input:focus,
 .form-container textarea:focus {
-    border-color: #4a90e2;
-    outline: none;
-    background: #ffffff;
+    @apply border-blue-500 outline-none bg-white;
 }
 
-/* Botón */
+/* Boton enviar */
 .form-container button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: #4a90e2;
-    color: white;
-    font-size: 17px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background 0.3s;
+    @apply 
+        w-full 
+        p-3 
+        border-0   /*sin borde*/
+        rounded-lg 
+        bg-blue-500 
+        text-white 
+        text-[17px] 
+        cursor-pointer   /*cursor de mano*/
+        mt-5 
+        transition-colors; /*transición suave en cambios de color*/
 }
 
 .form-container button:hover {
-    background: #1f6fba;
+    @apply bg-blue-800;
 }
 
 /* Enlace de volver */
 .back-link {
-    text-align: center;
-    margin-top: 20px;
+    @apply text-center mt-5;
 }
 
 .back-link a {
-    text-decoration: none;
-    color: #4a90e2;
-    font-weight: bold;
+    @apply no-underline text-blue-500 font-bold;
 }
 
 .back-link a:hover {
-    color: #1f6fba;
+    @apply text-blue-600;
 }
 
+/* Formulario Busqueda */
+.search-form  {
+   @apply mb-4 flex items-center gap-2;
+}
 
+.search-form input {
+    @apply border rounded px-2 py-1;
+}
+
+/* -----MODAL------- */
+/*Checkbox oculto*/
+.modal-toggle:checked + .btn-openModal + .modal {
+    display: flex;
+}
+
+/* Fondo del modal */
+.modal {
+    @apply hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center;
+}
+
+/* Contenido del modal*/
+.modal-content {
+    @apply bg-white p-6 rounded shadow-lg w-80;
+}
+
+/* Titulo del modal*/
+.tittle-modal {
+    @apply text-lg font-semibold mb-4 p-4 bg-green-100 w-full;
+}
+
+/* Monto*/
+.monto {
+    @apply block mb-1;
+}
+
+.enter-amount {
+    @apply border rounded w-full px-2 py-1;
+}
+
+/*Botón abrir y cerrar modal*/
+.btn-openModal {
+    @apply bg-blue-600 text-white px-4 py-2 rounded m-2 cursor-pointer;
+}
+
+/*Cerrar modal*/
+.btn-closeModal {
+    @apply bg-red-600 text-white px-4 py-2 rounded-lg m-2 cursor-pointer;
+}
+
+/* Botón guardar del modal*/
+.btn-save {
+    @apply  bg-green-600 text-white px-4 py-1 rounded-lg m-2;
+}
+
+/* Generar comprobante */
+
+.btn-voucher {
+    @apply  bg-yellow-600 text-white px-4 py-1 rounded-lg m-2;
+}

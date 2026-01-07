@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="table-container">
 
-        <a href="{{ route('client.create') }}">Create</a>
+        <a class="btn btn-success" href="{{ route('client.create') }}">Registrar</a>
 
         <table class="table">
             <thead>
@@ -18,10 +19,22 @@
                         CURP
                     </th>
                     <th>
-                        Nombre
+                        Nombre completo
                     </th>
                     <th>
-                        Dirección
+                        Calle
+                    </th>
+                     <th>
+                        Colonia
+                    </th>
+                     <th>
+                        Número interior
+                    </th>
+                     <th>
+                        Número exterior
+                    </th>
+                    <th>
+                        Acciones
                     </th>
                 </tr>
             </thead>
@@ -41,15 +54,25 @@
                             {{ $cli->name }}
                         </td>
                         <td>
-                            {{ $cli->direction }}
+                            {{ $cli->street }}
                         </td>
                         <td>
-                            <a href="{{ route('client.edit', $cli) }}">Editar</a>
-                            <a href="{{ route('client.show', $cli) }}">Mostrar</a>
+                            {{ $cli->colony }}
+                        </td>
+                        <td>
+                            {{ $cli->interior_number }}
+                        </td>
+                        <td>
+                            {{ $cli->exterior_number }}
+                        </td>
+                        <td>
+                            <a class="btn btn-warning" href="{{ route('client.edit', $cli) }}">Editar</a>
+                            <a class="btn btn-primary " href="{{ route('client.show', $cli) }}">Mostrar</a>
                             <form action="{{ route('client.destroy', $cli) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('¿Seguro que deseas eliminar este elemento?')">
+                                <button class="btn btn-danger" type="submit"
+                                    onclick="return confirm('¿Seguro que deseas eliminar este elemento?')">
                                     Eliminar
                                 </button>
                             </form>
@@ -58,8 +81,9 @@
                 @endforeach
             </tbody>
         </table>
-
-        {{ $clients->links() }} <!-- Permite navegar entre paginas -->
+        <div class="pagination">
+            {{ $clients->links() }} <!-- Permite navegar entre paginas -->
+        </div>
 
     </div>
 @endsection
