@@ -36,6 +36,8 @@ Route::get('/dashboard/payment/showPayment/{client}', [PaymentController::class,
 Route::get('/dashboard/payment/{client}/voucher', [PaymentController::class, 'voucher'])
     ->name('payment.voucher');   //ruta del comprobante de pago
 
+Route::get('/dashboard/payment/{payment}/voucherPDF', [PaymentController::class, 'downloadVoucherPdf'])
+    ->name('payment.voucherPDF');   //ruta de la descarga del pdf
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

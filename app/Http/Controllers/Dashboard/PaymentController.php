@@ -7,6 +7,7 @@ use App\Http\Requests\Payment\StorePaymentRequest;
 use App\Models\Client;
 use App\Models\Payment;
 use App\Services\ReceiptService;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -53,5 +54,14 @@ class PaymentController extends Controller
         }
 
         return view('dashboard.client.payment.voucher', compact('client', 'payment'));
+    }
+
+    public function downloadVoucherPdf (Payment $payment)
+    {
+        $client = $payment->client;
+        
+        $pdf = Pdf::loadView('dashboard.client.payment.voucher', compact('client', 'payment'));
+
+        return $pdf->download('comprobante_'.$payment->receipt_number.'.pdf');
     }
 }
