@@ -16,7 +16,7 @@
         <br>
 
         @if ($payment)
-            <a href="{{ route('payment.voucherPDF', $payment->id) }}" class="btn-voucher">
+            <a href="{{ route('payment.voucherPDF', $payment->id) }}" target="_blank" class="btn-voucher">
                 Descargar comprobante
             </a>
         @endif

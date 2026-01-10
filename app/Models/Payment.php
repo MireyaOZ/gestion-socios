@@ -14,6 +14,6 @@ class Payment extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class);  //cada pago pertenece a un cliente
+        return $this->belongsTo(Client::class);  //cada pago pertenece a un cliente  muchos a 1
     }
 }

@@ -1,0 +1,38 @@
+/*PDF estilos*/
+
+/* Cuerpo del PDF*/
+body {
+    font-family: DejaVu Sans, sans-serif;
+    font-size: 12px;
+    color: #333;
+}
+
+
+
+/* === COMPONENTES === */
+.container {
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.section-title {
+    background-color: #f2f2f2;
+    padding: 6px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* === TABLAS === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 5px;
+}
+
+.label {
+    font-weight: bold;
+    width: 35%;
+}

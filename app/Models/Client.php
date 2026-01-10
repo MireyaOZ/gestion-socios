@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;  //Permite eliminar registros sin borrarlos físicamente
 
 class Client extends Model
 {
     use SoftDeletes;
     
-    protected $fillable = [
+    protected $fillable = [     //define campos que se pueden llenar automáticamente
         'contract_number',
         'curp',
         'name',
@@ -21,6 +21,6 @@ class Client extends Model
 
     public function payments()
     {
-        return $this->hasMany(Payment::class); //Un cliente puede tener muchos pagos
+        return $this->hasMany(Payment::class); //Un cliente puede tener muchos pagos  1 a muchos
     }
 }

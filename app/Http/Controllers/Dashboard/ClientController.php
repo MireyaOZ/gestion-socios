@@ -18,7 +18,7 @@ class ClientController extends Controller
     {
         //$client = Client::find(3);
         //dd($client->name); 
-        $clients = Client::paginate(5);
+        $clients = Client::paginate(5);           //muestra lista de clientes
         return view('dashboard.client.index', compact('clients'));
     }
 
@@ -27,7 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        $client = new Client();    
+        $client = new Client();         //crea un modelo vacio, que aun no esta guardado en la base de datos
     
         return view('dashboard.client.create', compact('client'));   
     }
@@ -35,9 +35,9 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRequest $request)
+    public function store(StoreRequest $request)  
     {
-        Client::create($request->validated());
+        Client::create($request->validated());  //Se devuelven solo datos validados,crea y guarda
         return redirect()->route('client.create')->with('success', 'El usuario se registró con exito');
     }
 
@@ -46,7 +46,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        return view('dashboard.client.show', compact('client'));
+        return view('dashboard.client.show', compact('client')); //muestra un cliente por id
     }
 
     /**
@@ -54,7 +54,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        return view('dashboard.client.edit', compact('client'));
+        return view('dashboard.client.edit', compact('client'));  //muestra el formulario con los datos ya cargados
     }
 
     /**
@@ -62,7 +62,7 @@ class ClientController extends Controller
      */
     public function update(StoreRequest $request, Client $client)
     {
-        $client->update($request->validated());
+        $client->update($request->validated()); //valida datos y actualiza el cliente
         return redirect()->route('client.index')->with('success', 'Los datos se actualizaron con exito');
     }
 
@@ -71,7 +71,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        $client->delete();     
+        $client->delete();     //elimina el registro
         return to_route('client.index');
     }
 }
