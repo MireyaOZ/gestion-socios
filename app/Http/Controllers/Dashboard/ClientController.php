@@ -18,8 +18,8 @@ class ClientController extends Controller
     {
         //$client = Client::find(3);
         //dd($client->name); 
-        $clients = Client::paginate(5);           //muestra lista de clientes
-        return view('dashboard.client.index', compact('clients'));
+        $clients = Client::paginate(5);           //muestra lista de clientes de 5 por cada página
+        return view('dashboard.client.index', compact('clients'));  //muestra la vista y le envía variables a la vista
     }
 
     /**
@@ -38,7 +38,7 @@ class ClientController extends Controller
     public function store(StoreRequest $request)  
     {
         Client::create($request->validated());  //Se devuelven solo datos validados,crea y guarda
-        return redirect()->route('client.create')->with('success', 'El usuario se registró con exito');
+        return redirect()->route('client.create')->with('success', 'El usuario se registró con exito'); //redirige a otra página y muestra el mensaje
     }
 
     /**
@@ -54,7 +54,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        return view('dashboard.client.edit', compact('client'));  //muestra el formulario con los datos ya cargados
+        return view('dashboard.client.edit', compact('client'));  //muestra vista del formulario con los datos ya cargados
     }
 
     /**
@@ -72,6 +72,6 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         $client->delete();     //elimina el registro
-        return to_route('client.index');
+        return to_route('client.index'); //redirige a una ruta por nombre
     }
 }

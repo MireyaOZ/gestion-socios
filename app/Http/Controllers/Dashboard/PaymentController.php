@@ -12,10 +12,23 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function listClients()
+    public function listClients(Request $request)
     {
+        //Antes de agregar la búsqueda
         //dd(5);
-        $clients = Client::paginate(10);   //muestra lista de clientes para pagos
+        /*$clients = Client::paginate(10);   //muestra lista de clientes para pagos
+        return view('dashboard.client.payment.listClients', compact('clients'));*/
+
+        $search = $request->input('search');   //Se obtiene el valor del input que es search (texto de búsqueda)
+
+        $clients = Client::when($search, function ($query, $search) {    //ejecuta consulta si search tiene valor
+        $query->where('name', 'LIKE', "%{$search}%")      //filtra por columna name, LIKE busca coincidencias, % valor antes o después
+              ->orWhere('curp', 'LIKE', "%{$search}%")   //buscar en otras columnas 
+              ->orWhere('contract_number', 'LIKE', "%{$search}%");
+    })
+        /*->orderBy('id', 'desc')*/  //ordena por id del mas reciente al más antiguo
+        ->paginate(10);
+
         return view('dashboard.client.payment.listClients', compact('clients'));
     }
 
@@ -24,7 +37,7 @@ class PaymentController extends Controller
         return view('dashboard.client.payment.showClient', compact('client'));  //muestra cliente seleccionado
     }
 
-    public function storePayment(StorePaymentRequest $request, ReceiptService $receiptService)
+    public function storePayment(StorePaymentRequest $request, ReceiptService $receiptService)  //llama el servicio ReceiptService 
     {
         $receiptNumber = $receiptService->generateReceiptNumber();  //generar numero de recibo
 
@@ -33,24 +46,33 @@ class PaymentController extends Controller
 
         Payment::create($data);  //guarda el pago
 
-        return redirect()->back()->with('success', 'El pago fue registrado correctamente');
+        return redirect()->back()->with('success', 'El pago fue registrado correctamente'); //regresa a la página anterior y muestra el mensaje
         //return redirect()->route('payment.showPayment', $request->client_id)->with('success', 'Pago registrado correctamente');
     }
 
     public function showPayment(Client $client)
     {
-        return view('dashboard.client.payment.showPayment', compact('client'));  //muestra los pagos de un cliente
+        $payments = $client->payments()->orderBy('created_at', 'desc')->paginate(10);  //Se llama la relación payments del modelo Client para obtener los pagos que pertenecen a un cliente en especifico
+
+        return view('dashboard.client.payment.showPayment', compact('client', 'payments'));  //muestra los pagos de un cliente
     }
 
-    public function voucher(Client $client)
+    public function voucherLast(Client $client)
     {
-        $payment = Payment::where('client_id', $client->id)    //busca por id   
+        $payment = $client->payments()  //llama a la relación con payments del modelo Client para acceder a los pagos de un cliente  
             ->latest()    //busca el ultimo pago del cliente
             ->first();    //solo un pago
 
         if (!$payment) {   //valida que existan pagos
             return redirect()->back()->with('error', 'No hay pagos registrados');
         }
+
+        return view('dashboard.client.payment.voucher', compact('client', 'payment'));
+    }
+
+    public function voucher(Payment $payment)
+    {
+        $client = $payment->client; //obtiene el cliente asociado a un pago
 
         return view('dashboard.client.payment.voucher', compact('client', 'payment'));
     }
@@ -63,6 +85,6 @@ class PaymentController extends Controller
 
         //return $pdf->download('comprobante_'.$payment->receipt_number.'.pdf');   //descarga el pdf directamente
 
-        return $pdf->stream('comprobante_'.$payment->receipt_number.'.pdf'); //muestra el pdf en el navegador
+        return $pdf->stream('comprobante_'.$payment->receipt_number.'.pdf'); //muestra el pdf en el navegador 
     }
 }

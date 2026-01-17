@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app')   
 
 @section('content')
 
@@ -39,10 +39,10 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($clients as $cli)
+                @foreach ($clients as $cli)     <!-- foreach recorre cada cliente de la colección de clientes y lo guarda en una variable temporal-->
                     <tr>
                         <td>
-                            {{ $cli->id }}
+                            {{ $cli->id }}       <!--Crea una fila en la tabla-->
                         </td>
                         <td>
                             {{ $cli->contract_number }}
@@ -66,8 +66,8 @@
                             {{ $cli->exterior_number }}
                         </td>
                         <td>
-                            <a class="btn btn-warning" href="{{ route('client.edit', $cli) }}">Editar</a>
-                            <a class="btn btn-primary " href="{{ route('client.show', $cli) }}">Mostrar</a>
+                            <a class="btn btn-warning" href="{{ route('client.edit', $cli) }}">Editar</a>  <!--Ruta para editar un cliente -->
+                            <a class="btn btn-primary " href="{{ route('client.show', $cli) }}">Mostrar</a>   <!--Ruta para mostrar un cliente -->
                             <form action="{{ route('client.destroy', $cli) }}" method="post">
                                 @csrf
                                 @method('DELETE')

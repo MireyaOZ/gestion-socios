@@ -20,14 +20,14 @@ class StoreRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array      //Se definen los campos que se validan y como se validan
+    public function rules(): array      //Se definen los campos que se validan y como se validan, reglas de validación
     { 
         $clientId = $this->route('client')?->id; //Obtiene el id de un cliente, ignora el mismo registro al editar
 
         return [
             'contract_number' => [
-                'required', 
-                Rule::unique('clients', 'contract_number')->ignore($clientId),
+                'required',   //obligatorio
+                Rule::unique('clients', 'contract_number')->ignore($clientId),    //debe ser único en la tabla clients.contract_number, excepto en el cliente que se está editando
             ],
 
             'curp' => [

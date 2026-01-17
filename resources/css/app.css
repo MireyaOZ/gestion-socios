@@ -261,8 +261,48 @@
 }
 
 /* Generar comprobante */
-
 .btn-voucher {
     @apply  bg-yellow-600 text-white px-4 py-1 rounded-lg m-2;
 }
 
+/*Tabla de pagos*/
+.table-payments {
+    @apply
+    w-full
+    table-fixed
+    border-collapse;
+}
+
+.table-payments thead th {
+    @apply 
+      bg-blue-500 
+      text-white         /*color-texto*/ 
+        p-3 
+        text-center        /*text-align*/ 
+        text-[15px];       /*font-size*/ 
+}
+
+.table-payments tbody td {
+    @apply 
+        px-10              /*padding horizontal*/ 
+        py-2              /*padding vertical*/ 
+        border-b          /*border-bottom*/ 
+        border-gray-300 /*border-color*/ 
+        text-sm;
+}
+
+.btn-payments {
+    @apply 
+        border         /*borde solido y color por defecto*/ 
+        rounded-lg        /*borde redondeado*/ 
+        px-3 
+        py-2
+        text-white 
+        font-bold       /*letra en negritas*/ 
+        inline-block     /*display*/ 
+        transition-all     /*transición suave*/ 
+        text-center
+        bg-green-600
+        hover:bg-green-800 
+        mb-4; 
+}

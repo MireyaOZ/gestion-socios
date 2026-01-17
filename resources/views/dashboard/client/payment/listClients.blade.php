@@ -3,7 +3,7 @@
 @section('content')
     <div class="table-container">
 
-        <form method="GET" action="{{ route('client.index') }}" class="search-form">
+        <form method="GET" action="{{ route('payment.listClients') }}" class="search-form">
             <input type="text" name="search" value="{{ request('search') }}" placeholder="Buscar cliente...">
             <button type="submit" class="btn btn-primary">Buscar</button>
         </form>

@@ -29,7 +29,7 @@
 
             <!-- Page Content -->
             <main>
-                @yield('content')
+                @yield('content')   <!-- Espacio que ocupan las paginas para el contenido con section y endsection -->
             </main>
         </div>
     </body>

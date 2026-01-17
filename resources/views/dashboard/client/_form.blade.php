@@ -1,4 +1,4 @@
- @csrf
+ @csrf    <!--Genera token de seguridad, obligatorio en formularios-->
  <div>
      <label for="">Número de contrato</label>
      <input type="text" name="contract_number" value="{{ old('contract_number', $client->contract_number) }}">

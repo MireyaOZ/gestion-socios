@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;  //Permite eliminar registros sin borrarlos físicamente
+use Illuminate\Database\Eloquent\SoftDeletes;  //Permite eliminar registros sin borrarlos físicamente, borrado lógico
 
 class Client extends Model
 {
@@ -21,6 +21,6 @@ class Client extends Model
 
     public function payments()
     {
-        return $this->hasMany(Payment::class); //Un cliente puede tener muchos pagos  1 a muchos
+        return $this->hasMany(Payment::class); //Un cliente puede tener muchos pagos,  1 a muchos
     }
 }

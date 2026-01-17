@@ -42,7 +42,7 @@
                     <input class="enter-amount" type="number" name="amount" step="0.01" required>
 
                     <div>
-                        <!-- Botón para cerrar el modal -->
+                        <!-- 4. Botón para cerrar el modal -->
                         <label for="modal-toggle" class="btn-closeModal">
                             Cerrar
                         </label>
@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <a href="{{ route('payment.voucher', $client->id)}}" type="submit" class="btn-voucher">
+        <a href="{{ route('payment.voucherLast', $client)}}" type="submit" class="btn-voucher">
             Generar comprobante
         </a>
 
